@@ -2,8 +2,33 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import axios from "axios";
 function Write() {
+  const url = "https://e8c2-175-198-0-53.ngrok-free.app/jyt/";
+  const [state, setState] = useState({
+    date: "",
+    place: "",
+    member: "",
+    content: "",
+  });
+
+  const { date, place, member, content } = state;
+
   const navigate = useNavigate();
+  const 노선재받아라 = async () => {
+    console.log(date);
+    try {
+      await axios.post(url, {
+        date,
+        place,
+        member,
+        content,
+      });
+      navigate("/");
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   const navigateToHome = () => {
     if (state.date.length < 1) {
@@ -26,12 +51,7 @@ function Write() {
       },
     });
   };
-  const [state, setState] = useState({
-    date: "",
-    place: "",
-    member: "",
-    content: "",
-  });
+
   return (
     <>
       <Container>
@@ -90,7 +110,13 @@ function Write() {
               ></textarea>
             </Content>
             <ButtonContainer>
-              <Button onClick={navigateToHome}>제출하기</Button>
+              <Button
+                onClick={() => {
+                  노선재받아라();
+                }}
+              >
+                제출하기
+              </Button>
               <Button
                 onClick={() => {
                   navigate("/");

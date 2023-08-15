@@ -13,9 +13,7 @@ function App() {
     <>
       <GlobalStyles />
       <div className="App">
-        <header className="App-header">
-          <Nav />
-        </header>
+        <Nav />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/Game" element={<Game />}></Route>

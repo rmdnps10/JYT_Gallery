@@ -17,4 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px; 
     font-weight: 400; 
   }
+  a:hover{
+    color: white;
+  }
   `;

@@ -48,7 +48,7 @@ const HomeContainer = styled.section`
   h1 {
     font-size: 28px;
     padding: 50px 0px 15px 20px;
-    font-weight: 500;
+    font-weight: 600;
   }
   li {
     padding: 12px 0px;

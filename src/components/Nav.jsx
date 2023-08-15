@@ -1,82 +1,157 @@
-import jyt_logo from "../images/JYT_logo.png";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
 const Nav = () => {
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const toggleMenu = () => {
+    setIsMenuVisible(!isMenuVisible);
+  };
   return (
-    <>
-      <Wrap>
+    <NavContainer>
+      <NavWrapper>
         <div className="inner">
-          <li>
-            <Link to="/">
-              <img src={jyt_logo} alt="로고" />
-            </Link>
-          </li>
-          <li>
-            <Link to="/Who">About JYT Universe</Link>
-          </li>
-          <li>
-            <Link to="/History">연혁</Link>
-          </li>
-          <li>
-            <Link to="/Album">앨범</Link>
-          </li>
-          <li>
-            <Link to="/Game">JYT 케첩만들기</Link>
-          </li>
+          <div className="logo-container">JYT Universe</div>
+          <ul className="menu-list">
+            <li>
+              <FontAwesomeIcon
+                icon={isMenuVisible ? faXmark : faBars}
+                onClick={toggleMenu}
+              />
+            </li>
+            <li>
+              <Link to="/">정모 일지</Link>
+            </li>
+            <li>
+              <Link to="/Who">About JYT Universe</Link>
+            </li>
+            <li>
+              <Link to="/History">연혁</Link>
+            </li>
+            <li>
+              <Link to="/Album">앨범</Link>
+            </li>
+            <li>
+              <Link to="/Game">JYT 케첩만들기</Link>
+            </li>
+          </ul>
         </div>
-      </Wrap>
-    </>
+      </NavWrapper>
+      <VirtualWrapper>
+        <div className={`${isMenuVisible ? "show" : "hide"}`}>
+          <ul className="menu-list">
+            <li>
+              <Link to="/">정모 일지</Link>
+            </li>
+            <li>
+              <Link to="/Who">About JYT Universe</Link>
+            </li>
+            <li>
+              <Link to="/History">연혁</Link>
+            </li>
+            <li>
+              <Link to="/Album">앨범</Link>
+            </li>
+            <li>
+              <Link to="/Game">JYT 케첩만들기</Link>
+            </li>
+          </ul>
+        </div>
+      </VirtualWrapper>
+    </NavContainer>
   );
 };
 
-const Wrap = styled.div`
-  display: flex;
-  background-color: #ffffff;
-  border-bottom: 1px solid #eee8e8;
-  div.inner {
-    margin: 0px 80px;
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
+const NavContainer = styled.div`
+  position: relative;
+`;
+
+const VirtualWrapper = styled.div`
+  .show {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    padding: 10px 0px 10px;
+    border-radius: 20px 0px 0px 20px;
+    background-color: white;
+    box-shadow: -4px 5px 400px;
+  }
+
+  .hide {
+    display: none;
   }
 
   li {
+    width: 70vw;
+    padding: 10px 20px 10px;
+  }
+  li:first-child {
+    padding-top: 20px;
+  }
+  li:last-child {
+    padding-bottom: 0px;
+  }
+
+  li a {
+    font-size: 20px;
+    display: block;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid #e2e2e2;
+
+    &:hover {
+      color: black;
+    }
+  }
+`;
+
+const NavWrapper = styled.div`
+  height: 50px;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  align-items: center;
+  .inner {
+    margin: 0 auto;
+    width: 90vw;
+    display: flex;
+  }
+  .logo-container {
+    flex-grow: 1;
     display: flex;
     align-items: center;
-    color: #cdcdcd;
-    min-width: 30px;
+    font-size: 23px;
+    font-family: "Rubik", sans-serif;
   }
-  li:hover {
-    a {
-      color: #e58b37;
+
+  ul.menu-list {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+  }
+  ul.menu-list li {
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: white;
+
+    &:hover {
+      background-color: orange;
     }
   }
 
-  li img {
-    padding-right: 80px;
-    height: 48px;
+  ul.menu-list li:first-child {
+    display: none;
+    background-color: orange;
   }
 
-  a {
-    font-weight: 500;
-  }
-  @media screen and (max-width: 1000px) {
-    a {
-      text-align: center;
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    div.inner {
-      margin: 0px 0px;
-      background-color: white;
-    }
-    li {
+  @media screen and (max-width: 600px) {
+    ul.menu-list li {
       display: none;
     }
-    li:first-child {
+    ul.menu-list li:first-child {
       display: block;
-      margin-left: 30px;
     }
   }
 `;
