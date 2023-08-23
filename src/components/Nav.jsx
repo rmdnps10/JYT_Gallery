@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
@@ -7,14 +7,20 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
+  };
+  const Gohome = () => {
+    navigate("/");
   };
   return (
     <NavContainer>
       <NavWrapper>
         <div className="inner">
-          <div className="logo-container">JYT Universe</div>
+          <div className="logo-container" onClick={Gohome}>
+            JYT Universe
+          </div>
           <ul className="menu-list">
             <li>
               <FontAwesomeIcon
@@ -124,6 +130,9 @@ const NavWrapper = styled.div`
     align-items: center;
     font-size: 23px;
     font-family: "Rubik", sans-serif;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   ul.menu-list {

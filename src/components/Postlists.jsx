@@ -3,6 +3,7 @@ import PostItem from "./PostItem";
 import { styled } from "styled-components";
 
 function Postlists({ postList }) {
+  console.log(postList);
   return (
     <PostContainer>
       {postList.map((it) => {
@@ -14,6 +15,4 @@ function Postlists({ postList }) {
 
 export default Postlists;
 
-const PostContainer = styled.div`
-  height: 40vh;
-`;
+const PostContainer = styled.div``;

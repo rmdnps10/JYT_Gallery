@@ -1,56 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import axios from "axios";
 function Write() {
-  const url = "https://e8c2-175-198-0-53.ngrok-free.app/jyt/";
+  const url = "http://13.209.103.211:8080/jyt/post/";
   const [state, setState] = useState({
     date: "",
     place: "",
     member: "",
     content: "",
   });
-
   const { date, place, member, content } = state;
-
   const navigate = useNavigate();
   const 노선재받아라 = async () => {
     console.log(date);
     try {
+      if (state.date.length < 1) {
+        alert("날짜를 입력하세요.");
+        return;
+      }
+      if (state.place.length < 1) {
+        alert("장소를 입력하세요.");
+        return;
+      }
+      if (state.content.length < 3) {
+        alert("내용은 최소 이준엽_2020수능_물리등급 글자이상 입력하세요.");
+        return;
+      }
       await axios.post(url, {
-        date,
-        place,
-        member,
-        content,
+        create_date: date,
+        subject: place,
+        member: member,
+        content: content,
       });
+
       navigate("/");
     } catch (err) {
       alert(err);
     }
   };
 
-  const navigateToHome = () => {
-    if (state.date.length < 1) {
-      alert("날짜를 입력하세요.");
-      return;
-    }
-    if (state.place.length < 1) {
-      alert("장소를 입력하세요.");
-      return;
-    }
-    if (state.content.length < 3) {
-      alert("내용은 최소 이준엽_2020수능_물리등급 글자이상 입력하세요.");
-      return;
-    }
-    navigate("/", {
-      state: {
-        author: state.author,
-        title: state.title,
-        content: state.content,
-      },
-    });
-  };
+  useEffect(() => {
+    console.log("안녕");
+  }, []);
 
   return (
     <>
