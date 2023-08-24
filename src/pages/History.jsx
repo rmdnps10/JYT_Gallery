@@ -1,7 +1,7 @@
 const History = () => {
   return (
     <>
-      <div>하하하하</div>
+      <div>귀찮아 너가해</div>
     </>
   );
 };

@@ -28,7 +28,7 @@ function Footer() {
         </div>
         <div
           className="button"
-          style={{ color: `${location.pathname === "/About" ? "orange" : ""}` }}
+          style={{ color: `${location.pathname === "/Who" ? "orange" : ""}` }}
         >
           <Link to="/Who">
             <FontAwesomeIcon
@@ -58,9 +58,20 @@ function Footer() {
           </Link>
           <p>연혁</p>
         </div>
-        <div className="button">
+        <div
+          className="button"
+          style={{
+            color: `${location.pathname === "/Game" ? "orange" : ""}`,
+          }}
+        >
           <Link to="/Game">
-            <FontAwesomeIcon icon={faGamepad} size="xl" />
+            <FontAwesomeIcon
+              icon={faGamepad}
+              size="xl"
+              style={{
+                color: `${location.pathname === "/Game" ? "orange" : ""}`,
+              }}
+            />
           </Link>
           <p>케찹만들기</p>
         </div>
@@ -71,6 +82,7 @@ function Footer() {
 
 const FooterConainer = styled.div`
   position: fixed;
+  z-index: 999999;
   bottom: 0;
   background-color: white;
   padding: 10px 0;

@@ -154,10 +154,11 @@ const FlexContainer = styled.div`
 const WriteContainer = styled.div`
   position: relative;
   padding: 10px 50px 50px;
+  overflow: clip;
   background-color: rgba(255, 165, 0, 0.14);
   border-radius: 10px;
   @media screen and (max-width: 500px) {
-    padding: 10px 30px 50px;
+    padding: 10px 10px 50px;
     margin: 0px;
     width: 100%;
     box-sizing: border-box;

@@ -140,6 +140,7 @@ const HomeContainer = styled.section`
     font-size: 20px;
     text-align: center;
     cursor: pointer;
+    font-weight: 600;
   }
   .flex-container .page-container .page-num.current-page {
     color: red;

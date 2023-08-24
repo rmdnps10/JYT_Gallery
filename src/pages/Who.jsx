@@ -294,6 +294,7 @@ function Who() {
 }
 
 const WhoContainer = styled.div`
+padding-bottom: 100px;
   background-color: rgba(255, 165, 0, 0.14);
   }
   p.line-1 {
@@ -406,10 +407,11 @@ const ScrollContainer = styled.div`
 const FlexItem = styled.div`
   height: 300px;
   width: 360px;
+  border: 3px solid;
   background-color: white;
   padding-top: 30px;
   padding-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   position: relative;
   img {
     opacity: 0;
@@ -473,7 +475,7 @@ const FlexItem = styled.div`
     border-radius: 10px;
   }
   .job {
-    font-weight: 200;
+    font-weight: 600;
     font-size: 16px;
     text-align: center;
   }
