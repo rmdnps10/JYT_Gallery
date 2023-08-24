@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     font-family: 'Roboto', sans-serif;
     word-break: keep-all;
+    background-color: rgba(255, 165, 0, 0.14);
   }
   li{
     list-style-type:none;

@@ -1,19 +1,19 @@
 import { styled } from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 const Nav = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
   };
   const Gohome = () => {
     navigate("/");
   };
+  console.log(location);
   return (
     <NavContainer>
       <NavWrapper>
@@ -24,24 +24,78 @@ const Nav = () => {
           <ul className="menu-list">
             <li>
               <FontAwesomeIcon
-                icon={isMenuVisible ? faXmark : faBars}
-                onClick={toggleMenu}
+                icon={faPenToSquare}
+                onClick={() => {
+                  navigate("/Write");
+                }}
               />
             </li>
-            <li>
-              <Link to="/">정모 일지</Link>
+            <li
+              style={{
+                backgroundColor: `${
+                  location.pathname === "/" ? "orange" : "white"
+                }`,
+              }}
+            >
+              <Link
+                to="/"
+                style={{
+                  color: `${location.pathname === "/" ? "white" : "black"}`,
+                }}
+              >
+                정모 일지
+              </Link>
             </li>
-            <li>
-              <Link to="/Who">About JYT Universe</Link>
+            <li
+              style={{
+                backgroundColor: `${
+                  location.pathname === "/Who" ? "orange" : "white"
+                }`,
+              }}
+            >
+              <Link
+                to="/Who"
+                style={{
+                  color: `${location.pathname === "/Who" ? "white" : "black"}`,
+                }}
+              >
+         
+                연혁
+              </Link>
             </li>
-            <li>
-              <Link to="/History">연혁</Link>
+            <li
+              style={{
+                backgroundColor: `${
+                  location.pathname === "/Album" ? "orange" : "white"
+                }`,
+              }}
+            >
+              <Link
+                to="/Album"
+                style={{
+                  color: `${
+                    location.pathname === "/Album" ? "white" : "black"
+                  }`,
+                }}
+              >
+                앨범
+              </Link>
             </li>
-            <li>
-              <Link to="/Album">앨범</Link>
-            </li>
-            <li>
-              <Link to="/Game">JYT 케첩만들기</Link>
+            <li
+              style={{
+                backgroundColor: `${
+                  location.pathname === "/Game" ? "orange" : "white"
+                }`,
+              }}
+            >
+              <Link
+                to="/Game"
+                style={{
+                  color: `${location.pathname === "/Game" ? "white" : "black"}`,
+                }}
+              >
+                JYT 케첩만들기
+              </Link>
             </li>
           </ul>
         </div>
@@ -117,6 +171,7 @@ const VirtualWrapper = styled.div`
 const NavWrapper = styled.div`
   height: 50px;
   border: 1px solid #e2e2e2;
+  background-color: white;
   display: flex;
   align-items: center;
   .inner {
@@ -152,7 +207,7 @@ const NavWrapper = styled.div`
 
   ul.menu-list li:first-child {
     display: none;
-    background-color: orange;
+    background-color: black;
   }
 
   @media screen and (max-width: 600px) {

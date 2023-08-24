@@ -49,7 +49,7 @@ function Write() {
     <>
       <Container>
         <FlexContainer>
-          <p>✍🏻 정모 일지 작성하기</p>
+          <p>✍🏻 일지 작성하기</p>
           <WriteContainer>
             <Date>
               <h1>📅 날짜</h1>
@@ -146,7 +146,7 @@ const FlexContainer = styled.div`
   p {
     font-size: 28px;
     padding: 50px 0px 10px 20px;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
   }
 `;

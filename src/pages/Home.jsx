@@ -13,9 +13,7 @@ function Home() {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState([]);
-  const navigateToWrite = () => {
-    navigate("/Write");
-  };
+
   const [result, setResult] = useState([]);
   const fetchData = async () => {
     let url = `http://13.209.103.211:8080/jyt/post/?page=${page}`;
@@ -46,12 +44,17 @@ function Home() {
     <HomeContainer>
       <div className="inner">
         <h1>📖 정모 일지</h1>
-        <div className="bar">
-          <li>날짜</li>
-          <li>장소</li>
-          <li>멤버</li>
-          <li>정모 내용</li>
-        </div>
+        {window.innerWidth < 600 ? (
+          ""
+        ) : (
+          <div className="bar">
+            <li>날짜</li>
+            <li>장소</li>
+            <li>멤버</li>
+            <li>정모 내용</li>
+          </div>
+        )}
+
         <Postlists postList={result} />
 
         <div className="paging-section">
@@ -102,15 +105,12 @@ function Home() {
             )}
           </div>
         </div>
-        <Button onClick={navigateToWrite}>글쓰기</Button>
       </div>
     </HomeContainer>
   );
 }
 
 const HomeContainer = styled.section`
-  background-color: #f6f5ef;
-  height: 100vh;
   .paging-section {
     width: 300px;
     margin: 10px auto;

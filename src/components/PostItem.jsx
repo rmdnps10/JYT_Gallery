@@ -10,16 +10,20 @@ function PostItem({ subject, content, id, create_date, member }) {
 
   return (
     <div className="PostItem">
-      <Info>
-        <li class="date">{create_date}</li>
-        <li class="place">{subject}</li>
-        <li class="member">
-          {window.innerWidth < 500 ? truncateString(member, 13) : member}
-        </li>
-        <li class="content">
-          {window.innerWidth < 500 ? truncateString(content, 15) : content}
-        </li>
-      </Info>
+      {window.innerWidth < 600 ? (
+        ""
+      ) : (
+        <Info>
+          <li class="date">{create_date}</li>
+          <li class="place">{subject}</li>
+          <li class="member">
+            {window.innerWidth < 500 ? truncateString(member, 13) : member}
+          </li>
+          <li class="content">
+            {window.innerWidth < 500 ? truncateString(content, 15) : content}
+          </li>
+        </Info>
+      )}
     </div>
   );
 }

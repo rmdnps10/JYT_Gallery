@@ -7,6 +7,7 @@ import History from "./pages/History";
 import Who from "./pages/Who";
 import Album from "./pages/Album";
 import Write from "./pages/Write";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -22,9 +23,14 @@ function App() {
           <Route path="/Who" element={<Who />}></Route>
           <Route path="/Write" element={<Write />}></Route>
         </Routes>
+        <Footer />
       </div>
     </>
   );
 }
+
+
+
+
 
 export default App;
