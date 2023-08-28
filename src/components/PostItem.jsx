@@ -4,7 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 function PostItem({ subject, content, id, create_date, member }) {
+  const navigate = useNavigate();
   const url = "http://13.209.103.211:8080/jyt/post/";
   const truncateString = (inputString, maxLength) => {
     if (inputString.length > maxLength) {
@@ -13,18 +16,12 @@ function PostItem({ subject, content, id, create_date, member }) {
     return inputString;
   };
 
-  const deletePost = async () => {
-    try {
-      await axios.delete(`${url}${id}`);
-      alert("글이 삭제되었어요.");
-    } catch (err) {
-      console.log(err);
-      alert("삭제하기를 눌러서 글이 삭제된다고 생각하는 건 편견입니다.");
-    }
+  const goPost = () => {
+    navigate(`/post/${id}`);
   };
 
   return (
-    <div className="PostItem">
+    <div className="PostItem" onClick={goPost}>
       {window.innerWidth < 600 ? (
         <MobileInfo>
           <div className="top-container">
@@ -36,9 +33,12 @@ function PostItem({ subject, content, id, create_date, member }) {
             {subject}
           </div>
           <div className="content">{content}</div>
-          <div className="member">{member}</div>
-          <div className="button-container">
-            <button onClick={deletePost}>삭제하기</button>
+          <div className="member">
+            <FontAwesomeIcon
+              icon={faPeopleGroup}
+              style={{ marginRight: "5px" }}
+            />
+            {member}
           </div>
         </MobileInfo>
       ) : (
@@ -58,11 +58,17 @@ function PostItem({ subject, content, id, create_date, member }) {
 }
 
 const MobileInfo = styled.div`
-  margin-top: 10px;
-  background-color: white;
-  padding: 10px 10px 5px;
-  border: 3px solid;
-  border-radius: 10px;
+  width: 85%;
+  box-sizing: border-box;
+  margin: 20px auto 0px;
+  /* Rectangle 11 */
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
+  border-radius: 20px;
+  padding: 10px 15px 5px;
+
+  border-radius: 20px;
   .top-container {
     font-size: 10px;
     color: gray;
@@ -70,11 +76,13 @@ const MobileInfo = styled.div`
   }
   .content {
     margin-bottom: 10px;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 1.3;
   }
   .member {
     font-size: 10px;
+    margin-bottom: 5px;
   }
   .button-container {
     text-align: right;

@@ -6,7 +6,7 @@ import { Button } from "./Write";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 //https://jsonplaceholder.typicode.com/comments
 
 function Home() {
@@ -43,7 +43,17 @@ function Home() {
   return (
     <HomeContainer>
       <div className="inner">
-        <h1>📖 정모 일지</h1>
+        <h1>
+          <FontAwesomeIcon icon={faBook} size="lg" />
+          <div className="flex">
+            <div>정모 일지</div>
+            <p
+              style={{ fontSize: "12px", marginTop: "7px", fontWeight: "400" }}
+            >
+              우리의 만남을 이곳에서 시작해봐요.
+            </p>
+          </div>
+        </h1>
         {window.innerWidth < 600 ? (
           ""
         ) : (
@@ -177,8 +187,14 @@ const HomeContainer = styled.section`
 
   h1 {
     font-size: 28px;
-    padding: 50px 0px 15px 20px;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0px auto 10px;
+    padding: 20px;
+    padding-left: 30px;
+    padding-bottom: 10px;
   }
 
   @media screen and (max-width: 500px) {

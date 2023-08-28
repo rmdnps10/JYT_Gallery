@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 function Write() {
   const url = "http://13.209.103.211:8080/jyt/post/";
   const [state, setState] = useState({
@@ -49,7 +51,14 @@ function Write() {
     <>
       <Container>
         <FlexContainer>
-          <p>✍🏻 일지 작성하기</p>
+          <div className="flex-container">
+            <FontAwesomeIcon icon={faPenToSquare} size="2x" />
+            <div className="content">
+              <p>정모 글 작성하기</p>
+              <div className="sub">자세히 적어주면 감사!</div>
+            </div>
+          </div>
+
           <WriteContainer>
             <Date>
               <h1>📅 날짜</h1>
@@ -129,7 +138,7 @@ const h1Style = `
   text-align: right;
   align-self: center;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 15px;
 `;
 
 const Container = styled.div`
@@ -145,9 +154,18 @@ const Container = styled.div`
 const FlexContainer = styled.div`
   p {
     font-size: 28px;
-    padding: 50px 0px 10px 20px;
     font-weight: 600;
     margin-bottom: 10px;
+  }
+  .flex-container {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    gap: 8px;
+  }
+  .flex-container .sub {
+    font-size: 12px;
+    margin-top: 7px;
   }
 `;
 
@@ -155,8 +173,8 @@ const WriteContainer = styled.div`
   position: relative;
   padding: 10px 50px 50px;
   overflow: clip;
-  background-color: rgba(255, 165, 0, 0.14);
-  border-radius: 10px;
+  border-radius: 20px;
+
   @media screen and (max-width: 500px) {
     padding: 10px 10px 50px;
     margin: 0px;
@@ -174,9 +192,12 @@ const Date = styled.div`
   }
   input {
     height: 30px;
-    margin-left: 30px;
+    margin-left: 20px;
     padding-left: 10px;
     font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   }
 `;
 const Place = styled.div`
@@ -187,10 +208,13 @@ const Place = styled.div`
     ${h1Style};
   }
   input {
-    margin-left: 30px;
+    margin-left: 20px;
     height: 30px;
     padding-left: 10px;
     flex-grow: 1;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   }
 `;
 const Member = styled.div`
@@ -202,9 +226,12 @@ const Member = styled.div`
   }
   input {
     flex-grow: 1;
-    margin-left: 30px;
+    margin-left: 20px;
     height: 30px;
     padding-left: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   }
 `;
 
@@ -214,6 +241,9 @@ const Content = styled.div`
     height: 160px;
     padding: 20px;
     font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   }
   @media screen and (max-width: 500px) {
     width: 100%;

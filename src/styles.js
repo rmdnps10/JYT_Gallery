@@ -6,8 +6,7 @@ export const GlobalStyles = createGlobalStyle`
   body{
     font-family: 'Noto Sans KR', sans-serif;
     font-family: 'Roboto', sans-serif;
-    word-break: keep-all;
-    background-color: rgba(255, 165, 0, 0.14);
+    word-break: keep-all; 
   }
   li{
     list-style-type:none;
@@ -18,7 +17,5 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px; 
     font-weight: 400; 
   }
-  a:hover{
-    color: white;
-  }
+ 
   `;

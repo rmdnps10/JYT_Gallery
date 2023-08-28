@@ -8,7 +8,7 @@ import Who from "./pages/Who";
 import Album from "./pages/Album";
 import Write from "./pages/Write";
 import Footer from "./components/Footer";
-
+import ShowPost from "./components/ShowPost";
 function App() {
   return (
     <>
@@ -22,15 +22,12 @@ function App() {
           <Route path="/History" element={<History />}></Route>
           <Route path="/Who" element={<Who />}></Route>
           <Route path="/Write" element={<Write />}></Route>
+          <Route path="/post/:postID" element={<ShowPost />}></Route>
         </Routes>
         <Footer />
       </div>
     </>
   );
 }
-
-
-
-
 
 export default App;

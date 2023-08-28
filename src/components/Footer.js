@@ -87,11 +87,12 @@ const FooterConainer = styled.div`
   background-color: white;
   padding: 10px 0;
   width: 100vw;
+  color: black;
   .flex-wrap {
     border-radius: 10px;
     border: 4px solid;
     padding: 6px;
-    width: 80vw;
+    width: 70vw;
     justify-content: center;
     gap: 4vw;
     display: flex;
