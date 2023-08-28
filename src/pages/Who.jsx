@@ -419,6 +419,7 @@ const FlexItem = styled.div`
   img {
     opacity: 0;
     width: 200px;
+    
   }
   .image-container {
     width: 200px;

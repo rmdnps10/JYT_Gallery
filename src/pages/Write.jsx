@@ -6,7 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 function Write() {
-  const url = "http://13.209.103.211:8080/jyt/post/";
+  const url = "https://13.209.103.211:8080/jyt/post/";
   const [state, setState] = useState({
     date: "",
     place: "",

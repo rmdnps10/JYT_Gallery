@@ -8,6 +8,7 @@ import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 function ShowPost() {
   // 현재 url의 파라미터를 알 수 있는 리액트 훅 : useParams.
   const params = useParams();
@@ -34,6 +35,14 @@ function ShowPost() {
     const minutes = String(date.getMinutes()).padStart(2, "0");
 
     return `${year}/${month}/${day} ${hours}:${minutes}`;
+  };
+
+  const deletePost = async () => {
+    try {
+      axios.delete(`http://13.209.103.211:8080/jyt/post/${params.postID}`);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const submitGoHome = async () => {
@@ -106,6 +115,13 @@ function ShowPost() {
           <div className="member">{post.member}</div>
         </div>
       </PostContainer>
+      <PostButton>
+        <div className="trashcan">
+          <FontAwesomeIcon icon={faTrashCan} />
+          삭제하기
+        </div>
+      </PostButton>
+
       <CommentContainer>
         <div className="commentCount">
           <FontAwesomeIcon icon={faComments} />
@@ -226,6 +242,23 @@ const CommentContainer = styled.div`
     margin-top: 5px;
     font-size: 10px;
     color: #a6a6a6;
+  }
+`;
+
+const PostButton = styled.div`
+  width: 80%;
+  display: flex;
+  margin: 10px auto;
+  justify-content: flex-end;
+  .trashcan {
+    display: flex;
+    gap: 5px;
+    margin-right: 20px;
+    background-color: gray;
+    padding: 10px;
+    font-size: 12px;
+    color: white;
+    border-radius: 10px;
   }
 `;
 
