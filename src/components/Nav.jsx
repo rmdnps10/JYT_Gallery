@@ -16,7 +16,6 @@ const Nav = () => {
   const Gohome = () => {
     navigate("/");
   };
-  console.log(location);
   return (
     <NavContainer>
       <NavWrapper>
@@ -25,9 +24,7 @@ const Nav = () => {
             JYT Universe
           </div>
           <ul className="menu-list">
-            <li>
-              
-            </li>
+            <li></li>
             <li>
               <FontAwesomeIcon
                 icon={faPenToSquare}

@@ -18,6 +18,7 @@ import dongjin2 from "../images/dongjin2.JPG";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 function Who() {
   const [isHovering, setIsHovering] = useState({
     a: 0,
@@ -82,7 +83,13 @@ function Who() {
               <div className="quote">
                 <p>유일한 정상인</p>
               </div>
-              <div className="job">Front-end Developer</div>
+              <div className="job">
+                <FontAwesomeIcon
+                  icon={faBriefcase}
+                  style={{ marginRight: "4px" }}
+                />
+                Front-end Developer
+              </div>
             </FlexItem>
             <FlexItem>
               <div
@@ -121,7 +128,15 @@ function Who() {
               <div className="quote">
                 <p>"너 누구냐"</p>
               </div>
-              <div className="job">Back-end Developer</div>
+
+              <div className="job">
+                {" "}
+                <FontAwesomeIcon
+                  icon={faBriefcase}
+                  style={{ marginRight: "4px" }}
+                />
+                Back-end Developer
+              </div>
             </FlexItem>
             <FlexItem>
               <div
@@ -155,7 +170,14 @@ function Who() {
               <div className="quote">
                 <p>"진짜 미친 놈"</p>
               </div>
-              <div className="job">대마초 유통업자</div>
+              <div className="job">
+                {" "}
+                <FontAwesomeIcon
+                  icon={faBriefcase}
+                  style={{ marginRight: "4px" }}
+                />
+                대마초 유통업자
+              </div>
             </FlexItem>
             <FlexItem>
               <div
@@ -186,7 +208,14 @@ function Who() {
               <div className="quote">
                 <p>"JYT 살 언..뚜뚜뚜"</p>
               </div>
-              <div className="job">로켓공학자(본인주장)</div>
+              <div className="job">
+                {" "}
+                <FontAwesomeIcon
+                  icon={faBriefcase}
+                  style={{ marginRight: "4px" }}
+                />
+                로켓공학자(본인주장)
+              </div>
             </FlexItem>
             <FlexItem>
               <div
@@ -222,7 +251,14 @@ function Who() {
               <div className="quote">
                 <p>"벅벅", 정후타임</p>
               </div>
-              <div className="job">사업희망자</div>
+              <div className="job">
+                {" "}
+                <FontAwesomeIcon
+                  icon={faBriefcase}
+                  style={{ marginRight: "4px" }}
+                />
+                사업희망자
+              </div>
             </FlexItem>
             <FlexItem>
               <div
@@ -258,7 +294,14 @@ function Who() {
               <div className="quote">
                 <p>전설의 걸음걸이, 아기 윈스턴</p>
               </div>
-              <div className="job">마약제조자</div>
+              <div className="job">
+                {" "}
+                <FontAwesomeIcon
+                  icon={faBriefcase}
+                  style={{ marginRight: "4px" }}
+                />
+                마약제조자
+              </div>
             </FlexItem>
             <FlexItem>
               <div
@@ -286,7 +329,14 @@ function Who() {
               <div className="quote">
                 <p> 꼰대, CPA </p>
               </div>
-              <div className="job">골목식당 7892화 빌런</div>
+              <div className="job">
+                {" "}
+                <FontAwesomeIcon
+                  icon={faBriefcase}
+                  style={{ marginRight: "4px" }}
+                />
+                골목식당 7892화 빌런
+              </div>
             </FlexItem>
           </ScrollContainer>
         </FlexContainer>
@@ -419,7 +469,6 @@ const FlexItem = styled.div`
   img {
     opacity: 0;
     width: 200px;
-    
   }
   .image-container {
     width: 200px;
@@ -480,8 +529,8 @@ const FlexItem = styled.div`
     border-radius: 10px;
   }
   .job {
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: 300;
+    font-size: 12px;
     text-align: center;
   }
 `;

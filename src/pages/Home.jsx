@@ -2,16 +2,11 @@ import React, { useEffect, useState } from "react";
 import Postlists from "../components/Postlists";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Button } from "./Write";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-  faArrowLeft,
-  faAngleLeft,
-  faAngleRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
+
 //https://jsonplaceholder.typicode.com/comments
 
 function Home() {
@@ -21,13 +16,12 @@ function Home() {
 
   const [result, setResult] = useState([]);
   const fetchData = async () => {
-    let url = `https://13.209.103.211:8080/jyt/post/?page=${page}`;
+    let url = `http://13.209.103.211:8080/jyt/post/?page=${page}`;
     if (page === 1) {
-      url = "https://13.209.103.211:8080/jyt/post/";
+      url = "http://13.209.103.211:8080/jyt/post/";
     }
     try {
       const res = await axios.get(url);
-      console.log(res);
       const count = res.data.count;
       const lastPage = Math.ceil(count / 8);
       // 전체 페이지 배열을 담을 임시 참조타입(배열) 생성
@@ -44,7 +38,7 @@ function Home() {
   };
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, [page, result]);
   return (
     <HomeContainer>
       <div className="inner">

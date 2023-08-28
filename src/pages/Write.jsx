@@ -6,13 +6,22 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 function Write() {
-  const url = "https://13.209.103.211:8080/jyt/post/";
+  const url = "http://13.209.103.211:8080/jyt/post/";
+  const formData = new FormData();
   const [state, setState] = useState({
     date: "",
     place: "",
     member: "",
     content: "",
   });
+  const [file, setFile] = useState();
+  const onChangeImg = (e) => {
+    if (e.target.files) {
+      const uploadFile = e.target.files[0];
+      setFile(uploadFile);
+    }
+  };
+
   const { date, place, member, content } = state;
   const navigate = useNavigate();
   const 노선재받아라 = async () => {
@@ -30,11 +39,22 @@ function Write() {
         alert("내용은 최소 이준엽_2020수능_물리등급 글자이상 입력하세요.");
         return;
       }
-      await axios.post(url, {
-        create_date: date,
-        subject: place,
-        member: member,
-        content: content,
+      console.log(formData);
+      formData.append("image", file);
+      formData.append("create_date", date);
+      formData.append("subject", place);
+      formData.append("member", member);
+      formData.append("content", content);
+
+      let keys = formData.keys();
+      for (const pair of keys) {
+        console.log(pair);
+      }
+
+      await axios.post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       navigate("/");
@@ -99,6 +119,17 @@ function Write() {
                 }}
               />
             </Member>
+
+            <Image>
+              <h1>🌉 이미지</h1>
+              <form action="" type="image"></form>
+              <input
+                type="file"
+                class="real-upload"
+                onChange={onChangeImg}
+                accept="image/*"
+              ></input>
+            </Image>
             <Content>
               <textarea
                 value={state.content}
@@ -240,6 +271,15 @@ const Member = styled.div`
     border: none;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   }
+`;
+
+const Image = styled.div`
+  display: flex;
+  h1 {
+    ${h1Style};
+  }
+  gap: 10px;
+  margin-bottom: 10px;
 `;
 
 const Content = styled.div`

@@ -9,10 +9,12 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 function ShowPost() {
-  // 현재 url의 파라미터를 알 수 있는 리액트 훅 : useParams.
   const params = useParams();
   const navigate = useNavigate();
+  const [image, setImage] = useState({});
   const [post, setPost] = useState({
     id: "",
     date: "",
@@ -27,6 +29,18 @@ function ShowPost() {
     author: "",
     content: "",
   });
+
+  const [like, setLike] = useState(0);
+  const [disLike, setDisLike] = useState(0);
+  const increaseLike = () => {
+    setLike(like + 1);
+    axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/like/`);
+  };
+  const increasedisLike = () => {
+    setDisLike(disLike + 1);
+    axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/unlike/`);
+  };
+
   const formatDate = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -39,7 +53,10 @@ function ShowPost() {
 
   const deletePost = async () => {
     try {
-      axios.delete(`http://13.209.103.211:8080/jyt/post/${params.postID}`);
+      navigate("/");
+      await axios.delete(
+        `http://13.209.103.211:8080/jyt/post/${params.postID}`
+      );
     } catch (err) {
       console.log(err);
     }
@@ -47,7 +64,14 @@ function ShowPost() {
 
   const submitGoHome = async () => {
     try {
-      setComment({ ...comment, create_date: new Date().toISOString() });
+      var d = new Date();
+      setComment({
+        ...comment,
+        create_date: new Date(
+          d.getTime() - d.getTimezoneOffset() * 60000
+        ).toISOString(),
+      });
+
       await axios.post(
         `http://13.209.103.211:8080/jyt/post/${params.postID}/answer/`,
         {
@@ -63,6 +87,8 @@ function ShowPost() {
     }
   };
 
+  const LikeIncrease = () => {};
+
   const getPostData = async () => {
     try {
       const res = await axios.get(
@@ -75,6 +101,12 @@ function ShowPost() {
         place: res.data.subject,
         member: res.data.member,
       });
+
+      setImage(res.data.image);
+      console.log(image);
+
+      setLike(res.data.like);
+      setDisLike(res.data.unlike);
       const res2 = await axios.get(
         `http://13.209.103.211:8080/jyt/post/${params.postID}/answer`
       );
@@ -85,7 +117,7 @@ function ShowPost() {
   };
   useEffect(() => {
     getPostData();
-  }, [commentList]);
+  }, [commentList, like, disLike]);
   return (
     <>
       <div
@@ -112,15 +144,39 @@ function ShowPost() {
             {post.place}
           </div>
           <div className="content">{post.content}</div>
+          <div className="image">
+            <img
+              src={`http://13.209.103.211:8080/jyt${image}`}
+              style={{ width: "100%" }}
+              alt="이미지"
+            />
+          </div>
+
           <div className="member">{post.member}</div>
         </div>
       </PostContainer>
       <PostButton>
-        <div className="trashcan">
+        <div className="trashcan" onClick={deletePost}>
           <FontAwesomeIcon icon={faTrashCan} />
           삭제하기
         </div>
       </PostButton>
+      <LikeDisLike>
+        <LikeWrap>
+          <Like onClick={increaseLike}>
+            <FontAwesomeIcon icon={faThumbsUp} size="xl" />
+            <p>개추</p>
+          </Like>
+          <LikeCount>+ {like}</LikeCount>
+        </LikeWrap>
+        <LikeWrap>
+          <DisLike onClick={increasedisLike}>
+            <FontAwesomeIcon icon={faThumbsDown} size="xl" />
+            <p>죽어!</p>
+          </DisLike>
+          <DisLikeCount>- {disLike}</DisLikeCount>
+        </LikeWrap>
+      </LikeDisLike>
 
       <CommentContainer>
         <div className="commentCount">
@@ -138,7 +194,7 @@ function ShowPost() {
                 <p>{comment.author}</p>
               </div>
               <div className="content">{comment.content}</div>
-              <div className="time">{comment.date}</div>
+              <div className="time">{comment.create_date}</div>
             </div>
           ))}
         </div>
@@ -168,6 +224,43 @@ function ShowPost() {
     </>
   );
 }
+
+const LikeDisLike = styled.div`
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 20px;
+`;
+
+const LikeWrap = styled.div``;
+
+const LikeCount = styled.div`
+  text-align: center;
+  margin-top: 5px;
+  font-weight: 500;
+  color: orange;
+`;
+const DisLikeCount = styled(LikeCount)`
+  color: black;
+`;
+
+const Like = styled.button`
+  width: 45px;
+  height: 50px;
+  background-color: orange;
+  font-size: 15px;
+  color: white;
+  border-radius: 20px;
+  p {
+    font-size: 10px;
+  }
+  border: none;
+`;
+
+const DisLike = styled(Like)`
+  background-color: blue;
+`;
 
 const SubmitComment = styled.div`
   display: flex;
@@ -216,7 +309,7 @@ const CommentContainer = styled.div`
   }
   .commentList {
     margin-top: 10px;
-    height: 40vh;
+    height: 30vh;
     overflow: scroll;
   }
   .commentList .comment .author {
