@@ -5,7 +5,12 @@ import styled from "styled-components";
 import { Button } from "./Write";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faArrowLeft,
+  faAngleLeft,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 //https://jsonplaceholder.typicode.com/comments
 
@@ -79,7 +84,7 @@ function Home() {
                   }
                 }}
               >
-                <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faAngleLeft} size="xl"></FontAwesomeIcon>
               </div>
             ) : (
               <div className="empty"></div>
@@ -104,7 +109,8 @@ function Home() {
             {page < pages.length ? (
               <div className="right-arrow">
                 <FontAwesomeIcon
-                  icon={faArrowRight}
+                  icon={faAngleRight}
+                  size="xl"
                   onClick={() => {
                     setPage(page + 1);
                   }}
@@ -131,8 +137,6 @@ const HomeContainer = styled.section`
     gap: 3px;
   }
   .flex-container .left-arrow {
-    border-radius: 5px;
-    border: 3px solid;
     padding: 6px;
     cursor: pointer;
   }
@@ -158,7 +162,7 @@ const HomeContainer = styled.section`
 
   .flex-container .right-arrow {
     border-radius: 5px;
-    border: 3px solid;
+
     padding: 6px;
     cursor: pointer;
   }

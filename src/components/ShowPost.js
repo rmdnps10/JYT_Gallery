@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 function ShowPost() {
   // 현재 url의 파라미터를 알 수 있는 리액트 훅 : useParams.
@@ -78,6 +79,19 @@ function ShowPost() {
   }, [commentList]);
   return (
     <>
+      <div
+        className="back-button"
+        style={{ width: "80%", margin: "10px auto" }}
+      >
+        <FontAwesomeIcon
+          icon={faCircleChevronLeft}
+          size="2x"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+      </div>
+
       <PostContainer>
         <div className="flex-container">
           <div className="top-container">
@@ -206,6 +220,7 @@ const CommentContainer = styled.div`
   }
   .commentList .comment .content {
     margin-top: 5px;
+    font-size: 12px;
   }
   .commentList .comment .time {
     margin-top: 5px;
@@ -216,7 +231,7 @@ const CommentContainer = styled.div`
 
 const PostContainer = styled.div`
   background-color: white;
-  margin: 50px auto 0;
+  margin: 20px auto 0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   box-sizing: border-box;

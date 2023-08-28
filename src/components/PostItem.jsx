@@ -6,6 +6,7 @@ import axios from "axios";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 function PostItem({ subject, content, id, create_date, member }) {
   const navigate = useNavigate();
   const url = "http://13.209.103.211:8080/jyt/post/";

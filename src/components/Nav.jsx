@@ -26,6 +26,9 @@ const Nav = () => {
           </div>
           <ul className="menu-list">
             <li>
+              
+            </li>
+            <li>
               <FontAwesomeIcon
                 icon={faPenToSquare}
                 size="xl"

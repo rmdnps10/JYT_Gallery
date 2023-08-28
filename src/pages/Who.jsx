@@ -16,6 +16,8 @@ import jeonghu2 from "../images/jeonghu2.JPG";
 import dongjin from "../images/dongjin.JPG";
 import dongjin2 from "../images/dongjin2.JPG";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 function Who() {
   const [isHovering, setIsHovering] = useState({
     a: 0,
@@ -56,8 +58,8 @@ function Who() {
         </IntroContainer>
         <MemberLogo>
           <div className="inner">
-            <img src={logo} style={{ width: "100px" }} alt="로고"></img>
-            <span>창립 멤버 소개</span>
+            <FontAwesomeIcon icon={faPeopleGroup} />
+            <span>멤버 소개</span>
           </div>
         </MemberLogo>
         <FlexContainer>
@@ -295,11 +297,12 @@ function Who() {
 
 const WhoContainer = styled.div`
 padding-bottom: 100px;
-  background-color: rgba(255, 165, 0, 0.14);
+  
   }
   p.line-1 {
     font-size: 50px;
     width: 590px;
+    font-weight: 600;
     text-align: right;
     line-height: 1.5;
   }
@@ -381,7 +384,7 @@ const ImgContainer = styled.div`
 const Logo = styled.div``;
 
 const MemberLogo = styled.div`
-  margin: 0px auto 20px;
+  margin: 0px auto 10px;
   font-size: 20px;
   .inner {
     margin: 0 auto;
@@ -402,13 +405,13 @@ const ScrollContainer = styled.div`
   display: flex;
   gap: 30px;
   width: 1900px;
-  background-color: #ffa41b;
 `;
 const FlexItem = styled.div`
   height: 300px;
   width: 360px;
-  border: 3px solid;
-  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  background-color: black;
+  color: white;
   padding-top: 30px;
   padding-bottom: 10px;
   border-radius: 30px;
@@ -470,12 +473,13 @@ const FlexItem = styled.div`
   }
   .quote p {
     margin: 0px auto;
-    background-color: #eeeeee;
+    background-color: white;
+    color: black;
     padding: 8px 10px;
     border-radius: 10px;
   }
   .job {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 16px;
     text-align: center;
   }

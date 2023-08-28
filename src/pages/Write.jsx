@@ -157,15 +157,22 @@ const FlexContainer = styled.div`
     font-weight: 600;
     margin-bottom: 10px;
   }
+
   .flex-container {
     display: flex;
-    padding: 20px;
+    padding: 50px;
+    padding-bottom: 20px;
     align-items: center;
     gap: 8px;
   }
   .flex-container .sub {
     font-size: 12px;
     margin-top: 7px;
+  }
+  @media screen and (max-width: 500px) {
+    .flex-container {
+      padding: 20px;
+    }
   }
 `;
 
@@ -265,6 +272,8 @@ const Button = styled.button`
   color: white;
   border: none;
   font-size: 15px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
   &:hover {
     cursor: pointer;
     color: orange;
