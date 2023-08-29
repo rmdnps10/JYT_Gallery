@@ -152,15 +152,16 @@ const JYTContainer = styled.div`
   img {
     width: ${(props) => props.size * 0.6}%;
     border-radius: 30%;
-    animation: jyt;
+    animation: jyt 0.4s ease-in-out alternate infinite;
   }
 
   @keyframes jyt {
     0% {
-      transform: scale(1.2);
+      transform: scale(1);
     }
 
     100% {
+      transform: scale(1.2);
     }
   }
 
