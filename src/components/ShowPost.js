@@ -11,10 +11,13 @@ import { useState } from "react";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 function ShowPost() {
   const params = useParams();
   const navigate = useNavigate();
   const [image, setImage] = useState({});
+
+  // 게시물 받아오기
   const [post, setPost] = useState({
     id: "",
     date: "",
@@ -23,15 +26,20 @@ function ShowPost() {
     member: "",
   });
 
+  // 댓글들 받아오기
   const [commentList, setCommentList] = useState([]);
+
+  // 댓글 입력
   const [comment, setComment] = useState({
     create_date: "",
     author: "",
     content: "",
   });
 
+  //좋아요 싫어요
   const [like, setLike] = useState(0);
   const [disLike, setDisLike] = useState(0);
+
   const increaseLike = () => {
     setLike(like + 1);
     axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/like/`);
@@ -39,16 +47,6 @@ function ShowPost() {
   const increasedisLike = () => {
     setDisLike(disLike + 1);
     axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/unlike/`);
-  };
-
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-
-    return `${year}/${month}/${day} ${hours}:${minutes}`;
   };
 
   const deletePost = async () => {
@@ -62,7 +60,7 @@ function ShowPost() {
     }
   };
 
-  const submitGoHome = async () => {
+  const submitComment = async () => {
     try {
       var d = new Date();
       setComment({
@@ -101,10 +99,7 @@ function ShowPost() {
         place: res.data.subject,
         member: res.data.member,
       });
-
       setImage(res.data.image);
-      console.log(image);
-
       setLike(res.data.like);
       setDisLike(res.data.unlike);
       const res2 = await axios.get(
@@ -144,6 +139,13 @@ function ShowPost() {
             {post.place}
           </div>
           <div className="content">{post.content}</div>
+          <div className="member">
+            <FontAwesomeIcon
+              icon={faPeopleGroup}
+              style={{ marginRight: "5px" }}
+            ></FontAwesomeIcon>
+            {post.member}
+          </div>
           <div className="image">
             <img
               src={`http://13.209.103.211:8080/jyt${image}`}
@@ -151,8 +153,6 @@ function ShowPost() {
               alt="이미지"
             />
           </div>
-
-          <div className="member">{post.member}</div>
         </div>
       </PostContainer>
       <PostButton>
@@ -217,7 +217,7 @@ function ShowPost() {
             }}
           ></textarea>
         </div>
-        <div className="submit-icon" onClick={submitGoHome}>
+        <div className="submit-icon" onClick={submitComment}>
           <FontAwesomeIcon icon={faPencil} size="2x" />
         </div>
       </SubmitComment>
@@ -265,7 +265,7 @@ const DisLike = styled(Like)`
 const SubmitComment = styled.div`
   display: flex;
   width: 80%;
-  margin: 20px auto 0;
+  margin: 20px auto 120px;
   justify-content: center;
   gap: 10px;
   textarea {
@@ -309,8 +309,6 @@ const CommentContainer = styled.div`
   }
   .commentList {
     margin-top: 10px;
-    height: 30vh;
-    overflow: scroll;
   }
   .commentList .comment .author {
     margin-top: 20px;

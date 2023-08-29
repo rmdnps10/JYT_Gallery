@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBaby, faStar } from "@fortawesome/free-solid-svg-icons";
-
+import axios from "axios";
 const Game = React.memo(() => {
+  const fecthCount = () => {
+    const serverCount = axios.get("http://13.209.103.211:8080/jyt/game/1/");
+    setCount(serverCount);
+  };
   const [playing, setPlaying] = useState(false);
   const [count, setCount] = useState(0);
   const playSound = () => {

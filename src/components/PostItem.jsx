@@ -6,8 +6,19 @@ import axios from "axios";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
-import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
-function PostItem({ subject, content, id, create_date, member }) {
+import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+function PostItem({
+  subject,
+  content,
+  id,
+  create_date,
+  member,
+  like,
+  unlike,
+  image,
+}) {
+  const imageUrl = image.substr(27);
   const navigate = useNavigate();
   const url = "https://13.209.103.211:8080/jyt/post/";
   const truncateString = (inputString, maxLength) => {
@@ -34,12 +45,34 @@ function PostItem({ subject, content, id, create_date, member }) {
             {subject}
           </div>
           <div className="content">{content}</div>
+          <div className="image-preview">
+            <img
+              src={`http://13.209.103.211:8080/jyt/${imageUrl}`}
+              alt="이미지 프리뷰"
+            />
+          </div>
           <div className="member">
             <FontAwesomeIcon
               icon={faPeopleGroup}
               style={{ marginRight: "5px" }}
             />
             {member}
+            <div className="like-dislike">
+              <div className="like">
+                <FontAwesomeIcon
+                  icon={faThumbsUp}
+                  style={{ color: "black", marginRight: "3px" }}
+                ></FontAwesomeIcon>
+                +{like}
+              </div>
+              <div className="dislike">
+                <FontAwesomeIcon
+                  icon={faThumbsDown}
+                  style={{ color: "black", marginRight: "3px" }}
+                ></FontAwesomeIcon>
+                -{unlike}
+              </div>
+            </div>
           </div>
         </MobileInfo>
       ) : (
@@ -92,6 +125,22 @@ const MobileInfo = styled.div`
     margin: 0;
     border-radius: 5px;
     border: 2px solid #322f2f;
+  }
+  .like-dislike {
+    margin-top: 10px;
+    display: flex;
+    font-size: 12px;
+    gap: 10px;
+  }
+  .like-dislike .like {
+  }
+  .like-dislike .dislike {
+  }
+  .image-preview {
+    margin-bottom: 10px;
+  }
+  .image-preview img {
+    width: 10%;
   }
 `;
 
