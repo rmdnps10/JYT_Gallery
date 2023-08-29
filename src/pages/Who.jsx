@@ -1,7 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
 import intro from "../images/Intro.png";
-import logo from "../images/JYT_LOGO_2.png";
 import inyoung from "../images/inyoung.jpg";
 import minsoo from "../images/minsoo.jpg";
 import minsoo2 from "../images/minsoo2.jpeg";
