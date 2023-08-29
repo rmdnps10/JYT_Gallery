@@ -18,6 +18,8 @@ import dongjin2 from "../images/dongjin2.JPG";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
+import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
+import { faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 function Who() {
   const [isHovering, setIsHovering] = useState({
@@ -62,6 +64,7 @@ function Who() {
             <FontAwesomeIcon icon={faPeopleGroup} />
             <span>멤버 소개</span>
           </div>
+          <div className="guide"> >> 스크롤하여 넘겨보세요.</div>
         </MemberLogo>
         <FlexContainer>
           <ScrollContainer>
@@ -81,7 +84,9 @@ function Who() {
                 </h2>
               </div>
               <div className="quote">
+                <FontAwesomeIcon icon={faQuoteLeft} size="xs" />
                 <p>유일한 정상인</p>
+                <FontAwesomeIcon icon={faQuoteRight} size="xs" />
               </div>
               <div className="job">
                 <FontAwesomeIcon
@@ -126,7 +131,9 @@ function Who() {
                 </h2>
               </div>
               <div className="quote">
-                <p>"너 누구냐"</p>
+                <FontAwesomeIcon icon={faQuoteLeft} size="xs" />
+                <p>너 누구냐</p>
+                <FontAwesomeIcon icon={faQuoteRight} size="xs" />
               </div>
 
               <div className="job">
@@ -168,7 +175,9 @@ function Who() {
                 </h2>
               </div>
               <div className="quote">
-                <p>"진짜 미친 놈"</p>
+                <FontAwesomeIcon icon={faQuoteLeft} size="xs" />
+                <p>진짜 미친 놈</p>
+                <FontAwesomeIcon icon={faQuoteRight} size="xs" />
               </div>
               <div className="job">
                 {" "}
@@ -206,7 +215,9 @@ function Who() {
                 </h2>
               </div>
               <div className="quote">
-                <p>"JYT 살 언..뚜뚜뚜"</p>
+                <FontAwesomeIcon icon={faQuoteLeft} size="xs" />
+                <p>JYT 살 언..뚜뚜뚜</p>
+                <FontAwesomeIcon icon={faQuoteRight} size="xs" />
               </div>
               <div className="job">
                 {" "}
@@ -249,7 +260,9 @@ function Who() {
                 </h2>
               </div>
               <div className="quote">
-                <p>"벅벅", 정후타임</p>
+                <FontAwesomeIcon icon={faQuoteLeft} size="xs" />
+                <p>벅벅, 정후타임</p>
+                <FontAwesomeIcon icon={faQuoteRight} size="xs" />
               </div>
               <div className="job">
                 {" "}
@@ -292,7 +305,9 @@ function Who() {
                 </h2>
               </div>
               <div className="quote">
-                <p>전설의 걸음걸이, 아기 윈스턴</p>
+                <FontAwesomeIcon icon={faQuoteLeft} size="xs" />
+                <p>그 걸음걸이, 아기 윈스턴</p>
+                <FontAwesomeIcon icon={faQuoteRight} size="xs" />
               </div>
               <div className="job">
                 {" "}
@@ -327,7 +342,9 @@ function Who() {
                 </h2>
               </div>
               <div className="quote">
+                <FontAwesomeIcon icon={faQuoteLeft} size="xs" />
                 <p> 꼰대, CPA </p>
+                <FontAwesomeIcon icon={faQuoteRight} size="xs" />
               </div>
               <div className="job">
                 {" "}
@@ -434,16 +451,20 @@ const ImgContainer = styled.div`
 const Logo = styled.div``;
 
 const MemberLogo = styled.div`
-  margin: 0px auto 10px;
+  margin: 0px auto 3px;
   font-size: 20px;
   .inner {
     margin: 0 auto;
     display: flex;
     justify-content: center;
     gap: 5px;
-    span {
-      align-self: flex-end;
-    }
+  }
+
+  .guide {
+    font-size: 12px;
+    margin: 5px 20px;
+    color: black;
+    font-weight: 300;
   }
 `;
 
@@ -451,7 +472,7 @@ const FlexContainer = styled.div`
   overflow-x: scroll;
 `;
 const ScrollContainer = styled.div`
-  padding: 25px 40px;
+  padding: 10px 40px;
   display: flex;
   gap: 30px;
   width: 1900px;
@@ -461,6 +482,7 @@ const FlexItem = styled.div`
   width: 360px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   background-color: black;
+
   color: white;
   padding-top: 30px;
   padding-bottom: 10px;
@@ -485,7 +507,7 @@ const FlexItem = styled.div`
     width: 245.71px;
     height: 340px;
     border-radius: 10px;
-    background-color: gray;
+
     opacity: 0.2;
   }
   .image-container:hover img {
@@ -517,15 +539,16 @@ const FlexItem = styled.div`
     width: 100%;
     display: flex;
     font-size: 15px;
+    justify-content: center;
+    gap: 2px;
     text-align: center;
     margin-bottom: 3px;
     padding: 6px 0;
   }
   .quote p {
-    margin: 0px auto;
-    background-color: white;
-    color: black;
-    padding: 8px 10px;
+    color: white;
+    padding: 3px;
+    padding-bottom: 8px;
     border-radius: 10px;
   }
   .job {
