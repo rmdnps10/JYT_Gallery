@@ -18,7 +18,9 @@ function PostItem({
   unlike,
   image,
 }) {
-  const imageUrl = image.substr(27);
+  const imageProcessing = (str) => {
+    return str.substr(27);
+  };
   const navigate = useNavigate();
   const url = "https://13.209.103.211:8080/jyt/post/";
   const truncateString = (inputString, maxLength) => {
@@ -34,7 +36,7 @@ function PostItem({
 
   return (
     <div className="PostItem" onClick={goPost}>
-      {window.innerWidth < 600 ? (
+      {window.innerWidth < 2000 ? (
         <MobileInfo>
           <div className="top-container">
             {create_date}{" "}
@@ -45,12 +47,17 @@ function PostItem({
             {subject}
           </div>
           <div className="content">{content}</div>
-          <div className="image-preview">
-            <img
-              src={`http://13.209.103.211:8080/jyt/${imageUrl}`}
-              alt="이미지 프리뷰"
-            />
-          </div>
+
+          {image ? (
+            <div className="image-preview">
+              <img
+                src={`http://13.209.103.211:8080/jyt/${imageProcessing(image)}`}
+                alt="이미지 프리뷰"
+              />
+            </div>
+          ) : (
+            ""
+          )}
           <div className="member">
             <FontAwesomeIcon
               icon={faPeopleGroup}

@@ -15,6 +15,7 @@ function Home() {
   const [pages, setPages] = useState([]);
 
   const [result, setResult] = useState([]);
+  
   const fetchData = async () => {
     let url = `http://13.209.103.211:8080/jyt/post/?page=${page}`;
     if (page === 1) {
@@ -53,7 +54,7 @@ function Home() {
             </p>
           </div>
         </h1>
-        {window.innerWidth < 600 ? (
+        {window.innerWidth < 2000 ? (
           ""
         ) : (
           <div className="bar">

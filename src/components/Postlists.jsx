@@ -6,8 +6,8 @@ function Postlists({ postList }) {
   return (
     <PostContainer
       style={{
-        height: `${window.innerWidth < 600 ? "calc(100vh  -  300px)" : ""}`,
-        overflow: `${window.innerWidth < 600 ? "scroll" : ""}`,
+        height: `${window.innerWidth < 2000 ? "calc(100vh  -  300px)" : ""}`,
+        overflow: `${window.innerWidth < 2000 ? "scroll" : ""}`,
       }}
     >
       {postList.map((it) => {

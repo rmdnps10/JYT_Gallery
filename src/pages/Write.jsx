@@ -14,7 +14,7 @@ function Write() {
     member: "",
     content: "",
   });
-  const [file, setFile] = useState();
+  const [file, setFile] = useState("");
   const onChangeImg = (e) => {
     if (e.target.files) {
       const uploadFile = e.target.files[0];
