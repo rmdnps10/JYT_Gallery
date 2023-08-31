@@ -82,7 +82,6 @@ function ShowPost() {
 
   const getPostData = async () => {
     try {
-      console.log(`/api/jyt/post/${params.postID}`);
       const res = await axios.get(`/api/jyt/post/${params.postID}`);
       console.log(res);
       setPost({

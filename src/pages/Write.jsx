@@ -51,7 +51,7 @@ function Write() {
         console.log(pair);
       }
 
-      await axios.post(url, formData, {
+      await axios.post(`/api/jyt/post`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
