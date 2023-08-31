@@ -84,6 +84,7 @@ function ShowPost() {
     try {
       console.log(`/api/jyt/post/${params.postID}`);
       const res = await axios.get(`/api/jyt/post/${params.postID}`);
+      console.log(res);
       setPost({
         id: res.data.id,
         date: res.data.create_date,
@@ -91,11 +92,13 @@ function ShowPost() {
         place: res.data.subject,
         member: res.data.member,
       });
+
       setImage(res.data.image);
       setLike(res.data.like);
       setDisLike(res.data.unlike);
 
       const res2 = await axios.get(`/api/jyt/post/${params.postID}/answer`);
+      console.log(res2);
       setCommentList(res2.data);
       console.log(post);
       console.log(commentList);
