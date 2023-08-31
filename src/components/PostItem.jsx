@@ -20,7 +20,7 @@ function PostItem({
     return str.substr(27);
   };
   const navigate = useNavigate();
-  const url = "https://13.209.103.211:8080/jyt/post/";
+  const url = "/api/jyt/post/";
   const truncateString = (inputString, maxLength) => {
     if (inputString.length > maxLength) {
       return inputString.substr(0, maxLength) + "...";
@@ -46,16 +46,7 @@ function PostItem({
           </div>
           <div className="content">{content}</div>
 
-          {image ? (
-            <div className="image-preview">
-              <img
-                src={`http://13.209.103.211:8080/jyt/${imageProcessing(image)}`}
-                alt="이미지 프리뷰"
-              />
-            </div>
-          ) : (
-            ""
-          )}
+          {image ? <div className="image-preview"></div> : ""}
           <div className="member">
             <FontAwesomeIcon
               icon={faPeopleGroup}
