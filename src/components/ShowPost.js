@@ -80,7 +80,6 @@ function ShowPost() {
     }
   };
 
-
   const getPostData = async () => {
     try {
       const res = await axios.get(`/api/jyt/post/${params.postID}`);
@@ -94,8 +93,11 @@ function ShowPost() {
       setImage(res.data.image);
       setLike(res.data.like);
       setDisLike(res.data.unlike);
+
       const res2 = await axios.get(`/api/jyt/post/${params.postID}/answer`);
       setCommentList(res2.data);
+      console.log(post);
+      console.log(commentList);
     } catch (err) {
       alert(err);
     }
