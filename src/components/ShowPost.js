@@ -93,6 +93,8 @@ function ShowPost() {
       setImage(res.data.image);
       setLike(res.data.like);
       setDisLike(res.data.unlike);
+      console.log(res);
+      console.log(res2);
 
       const res2 = await axios.get(`/api/jyt/post/${params.postID}/answer`);
       setCommentList(res2.data);
