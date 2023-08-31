@@ -137,13 +137,6 @@ function ShowPost() {
             ></FontAwesomeIcon>
             {post.member}
           </div>
-          <div className="image">
-            <img
-              src={`/api/jyt${image}`}
-              style={{ width: "100%" }}
-              alt="이미지"
-            />
-          </div>
         </div>
       </PostContainer>
       <PostButton>
