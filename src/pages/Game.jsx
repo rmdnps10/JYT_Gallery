@@ -5,7 +5,7 @@ import { faBaby, faStar } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 const Game = React.memo(() => {
   const fecthCount = () => {
-    const serverCount = axios.get("http://13.209.103.211:8080/jyt/game/1/");
+    const serverCount = axios.get("/jyt/game/1/");
     setCount(serverCount);
   };
   const [playing, setPlaying] = useState(false);
@@ -19,25 +19,25 @@ const Game = React.memo(() => {
 
   const countPlus = () => {
     playSound();
-    if (count < 100) {
+    if (count < 10) {
       setImageIndex(0);
-    } else if (count < 200) {
+    } else if (count < 20) {
       setImageIndex(1);
-    } else if (count < 300) {
+    } else if (count < 30) {
       setImageIndex(2);
-    } else if (count < 400) {
+    } else if (count < 40) {
       setImageIndex(3);
-    } else if (count < 500) {
+    } else if (count < 50) {
       setImageIndex(4);
-    } else if (count < 600) {
+    } else if (count < 60) {
       setImageIndex(5);
-    } else if (count < 700) {
+    } else if (count < 70) {
       setImageIndex(6);
-    } else if (count < 800) {
+    } else if (count < 80) {
       setImageIndex(7);
     }
 
-    if (count % 100 === 98) {
+    if (count % 100 === 8) {
       setImageIndex(8);
     }
     setCount(count + 1);
@@ -80,10 +80,10 @@ const Game = React.memo(() => {
             <p class="description">모두가 합심해서 JYT를 키워봐요.</p>
           </div>
         </TitleContainer>
-        <ProgressBar size={count % 100}>
+        <ProgressBar size={count % 10}>
           <div className="progess"></div>
         </ProgressBar>
-        <JYTContainer size={(count % 100) + 25}>
+        <JYTContainer size={(count % 10) + 25}>
           <img
             src={`./images/jyt/${imageList[imageIndex]}`}
             alt="이준엽"
@@ -137,7 +137,7 @@ const ProgressBar = styled.div`
       rgba(204, 0, 0, 1) 100%
     );
     height: 25px;
-    width: ${(props) => props.size}%;
+    width: ${(props) => props.size * 10}%;
   }
 `;
 

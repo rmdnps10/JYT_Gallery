@@ -42,19 +42,17 @@ function ShowPost() {
 
   const increaseLike = () => {
     setLike(like + 1);
-    axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/like/`);
+    axios.post(`/api/jyt/post/${params.postID}/like/`);
   };
   const increasedisLike = () => {
     setDisLike(disLike + 1);
-    axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/unlike/`);
+    axios.post(`/api/jyt/post/${params.postID}/unlike/`);
   };
 
   const deletePost = async () => {
     try {
       navigate("/");
-      await axios.delete(
-        `http://13.209.103.211:8080/jyt/post/${params.postID}`
-      );
+      await axios.delete(`/api/jyt/post/${params.postID}`);
     } catch (err) {
       console.log(err);
     }
@@ -70,15 +68,12 @@ function ShowPost() {
         ).toISOString(),
       });
 
-      await axios.post(
-        `http://13.209.103.211:8080/jyt/post/${params.postID}/answer/`,
-        {
-          question: params.postID,
-          content: comment.content,
-          author: comment.author,
-          create_date: comment.create_date,
-        }
-      );
+      await axios.post(`/api/jyt/post/${params.postID}/answer/`, {
+        question: params.postID,
+        content: comment.content,
+        author: comment.author,
+        create_date: comment.create_date,
+      });
       alert("댓글을 등록하였습니다.");
     } catch (err) {
       alert(err);
@@ -89,9 +84,7 @@ function ShowPost() {
 
   const getPostData = async () => {
     try {
-      const res = await axios.get(
-        `http://13.209.103.211:8080/jyt/post/${params.postID}`
-      );
+      const res = await axios.get(`/api/jyt/post/${params.postID}`);
       setPost({
         id: res.data.id,
         date: res.data.create_date,
@@ -102,9 +95,7 @@ function ShowPost() {
       setImage(res.data.image);
       setLike(res.data.like);
       setDisLike(res.data.unlike);
-      const res2 = await axios.get(
-        `http://13.209.103.211:8080/jyt/post/${params.postID}/answer`
-      );
+      const res2 = await axios.get(`/api/jyt/post/${params.postID}/answer`);
       setCommentList(res2.data);
     } catch (err) {
       alert(err);
