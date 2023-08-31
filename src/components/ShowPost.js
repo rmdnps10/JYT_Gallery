@@ -80,7 +80,6 @@ function ShowPost() {
     }
   };
 
-  const LikeIncrease = () => {};
 
   const getPostData = async () => {
     try {
