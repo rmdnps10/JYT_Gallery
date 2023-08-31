@@ -139,7 +139,7 @@ function ShowPost() {
           </div>
           <div className="image">
             <img
-              src={`http://13.209.103.211:8080/jyt${image}`}
+              src={`/api/jyt${image}`}
               style={{ width: "100%" }}
               alt="이미지"
             />
