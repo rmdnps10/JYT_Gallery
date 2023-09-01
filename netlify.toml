@@ -1,4 +1,5 @@
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "http://13.209.103.211:8080/:splat"
   status = 200
+  force= true
