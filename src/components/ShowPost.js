@@ -42,17 +42,17 @@ function ShowPost() {
 
   const increaseLike = () => {
     setLike(like + 1);
-    axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/like/`);
+    axios.post(`/api/jyt/post/${params.postID}/like/`);
   };
   const increasedisLike = () => {
     setDisLike(disLike + 1);
-    axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/unlike/`);
+    axios.post(`/api/jyt/post/${params.postID}/unlike/`);
   };
 
   const deletePost = async () => {
     try {
       navigate("/");
-      await axios.delete(`http://13.209.103.211:8080/jyt/post/${params.postID}`);
+      await axios.delete(`/api/jyt/post/${params.postID}`);
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +68,7 @@ function ShowPost() {
         ).toISOString(),
       });
 
-      await axios.post(`http://13.209.103.211:8080/jyt/post/${params.postID}/answer/`, {
+      await axios.post(`/api/jyt/post/${params.postID}/answer/`, {
         question: params.postID,
         content: comment.content,
         author: comment.author,
@@ -82,7 +82,7 @@ function ShowPost() {
 
   const getPostData = async () => {
     try {
-      const res = await axios.get(`http://13.209.103.211:8080/jyt/post/${params.postID}`);
+      const res = await axios.get(`/api/jyt/post/${params.postID}`);
       console.log(res);
       setPost({
         id: res.data.id,
@@ -96,7 +96,7 @@ function ShowPost() {
       setLike(res.data.like);
       setDisLike(res.data.unlike);
 
-      const res2 = await axios.get(`http://13.209.103.211:8080/jyt/post/${params.postID}/answer`);
+      const res2 = await axios.get(`/api/jyt/post/${params.postID}/answer`);
       console.log(res2);
       setCommentList(res2.data);
       console.log(post);
