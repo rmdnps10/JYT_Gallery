@@ -17,9 +17,9 @@ function Home() {
   const [result, setResult] = useState([]);
 
   const fetchData = async () => {
-    let url = `http://13.209.103.211:8080/jyt/post/?page=${page}`;
+    let url = `http://13.209.103.211:80/jyt/post/?page=${page}`;
     if (page === 1) {
-      url = "http://13.209.103.211:8080/jyt/post/";
+      url = "http://13.209.103.211:80/jyt/post/";
     }
     try {
       const res = await axios.get(`/api/jyt/post/?page=${page}`);
