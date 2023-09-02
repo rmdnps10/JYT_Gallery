@@ -84,7 +84,6 @@ function ShowPost() {
   const getPostData = async () => {
     try {
       const res = await axios.get(`${Baseurl}post/${params.postID}`);
-      console.log(res);
       setPost({
         id: res.data.id,
         date: res.data.create_date,
@@ -96,12 +95,8 @@ function ShowPost() {
       setImage(res.data.image);
       setLike(res.data.like);
       setDisLike(res.data.unlike);
-
       const res2 = await axios.get(`${Baseurl}post/${params.postID}/answer`);
-      console.log(res2);
       setCommentList(res2.data);
-      console.log(post);
-      console.log(commentList);
     } catch (err) {
       alert(err);
     }
@@ -135,6 +130,10 @@ function ShowPost() {
             {post.place}
           </div>
           <div className="content">{post.content}</div>
+          <img
+            src={`${Baseurl.slice(0, -1)}${image}`}
+            style={{ width: "120px" }}
+          />
           <div className="member">
             <FontAwesomeIcon
               icon={faPeopleGroup}
