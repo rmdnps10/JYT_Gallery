@@ -20,7 +20,11 @@
 - 아카이빙의 기능 뿐만 아니라, 댓글, 좋아요, 싫어요를 해당 게시물에 추가할 수 있습니다.
 - 귀여운 JYT를 키워보는 게임을 즐길 수 있습니다
 
-##Stacks 🐈
+### Published URL 
+
+https://animated-blini-5d5940.netlify.app/
+
+
 
 ### Environment
 
