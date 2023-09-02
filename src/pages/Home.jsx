@@ -6,6 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { Baseurl } from "../App";
 
 //https://jsonplaceholder.typicode.com/comments
 
@@ -17,12 +18,12 @@ function Home() {
   const [result, setResult] = useState([]);
 
   const fetchData = async () => {
-    let url = `http://13.209.103.211:80/jyt/post/?page=${page}`;
+    let url = `${Baseurl}/post/?page=${page}`;
     if (page === 1) {
-      url = "http://13.209.103.211:80/jyt/post/";
+      url = `${Baseurl}post/`;
     }
     try {
-      const res = await axios.get(`/api/jyt/post/?page=${page}`);
+      const res = await axios.get(`${Baseurl}post/?page=${page}`);
       const count = res.data.count;
       const lastPage = Math.ceil(count / 8);
       // 전체 페이지 배열을 담을 임시 참조타입(배열) 생성

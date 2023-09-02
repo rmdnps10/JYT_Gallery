@@ -5,8 +5,8 @@ import { styled } from "styled-components";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { Baseurl } from "../App";
 function Write() {
-  const url = "http://13.209.103.211:80/jyt/post/";
   const formData = new FormData();
   const [state, setState] = useState({
     date: "",
@@ -51,7 +51,7 @@ function Write() {
         console.log(pair);
       }
 
-      await axios.post(`/api/jyt/post`, formData, {
+      await axios.post(`${Baseurl}post/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

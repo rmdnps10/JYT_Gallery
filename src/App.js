@@ -9,6 +9,7 @@ import Album from "./pages/Album";
 import Write from "./pages/Write";
 import Footer from "./components/Footer";
 import ShowPost from "./components/ShowPost";
+export const Baseurl = process.env.REACT_APP_KEY;
 function App() {
   return (
     <>
