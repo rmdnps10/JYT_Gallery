@@ -13,6 +13,7 @@ import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import { Baseurl } from "../App";
+import moment from "moment";
 function ShowPost() {
   const params = useParams();
   const navigate = useNavigate();
@@ -61,20 +62,17 @@ function ShowPost() {
 
   const submitComment = async () => {
     try {
-      var d = new Date();
       setComment({
         ...comment,
-        create_date: new Date(
-          d.getTime() - d.getTimezoneOffset() * 60000
-        ).toISOString(),
       });
 
       await axios.post(`${Baseurl}post/${params.postID}/answer/`, {
         question: params.postID,
         content: comment.content,
         author: comment.author,
-        create_date: comment.create_date,
+        create_date: moment().format("YYYY-MM-DD HH:mm"),
       });
+
       alert("댓글을 등록하였습니다.");
     } catch (err) {
       alert(err);
@@ -103,7 +101,7 @@ function ShowPost() {
   };
   useEffect(() => {
     getPostData();
-  }, [commentList, like, disLike]);
+  }, [like, disLike, commentList]);
   return (
     <>
       <div
@@ -130,10 +128,14 @@ function ShowPost() {
             {post.place}
           </div>
           <div className="content">{post.content}</div>
-          <img
-            src={`${Baseurl.slice(0, -1)}${image}`}
-            style={{ width: "120px" }}
-          />
+          {image ? (
+            <img
+              src={`${Baseurl.slice(0, -1)}${image}`}
+              style={{ width: "120px" }}
+            />
+          ) : (
+            ""
+          )}
           <div className="member">
             <FontAwesomeIcon
               icon={faPeopleGroup}
@@ -196,6 +198,7 @@ function ShowPost() {
             onChange={(e) => {
               setComment({ ...comment, author: e.target.value });
             }}
+            style={{ border: "1px solid" }}
           />
           <textarea
             placeholder="댓글을 입력하세요."

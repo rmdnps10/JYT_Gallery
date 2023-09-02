@@ -78,7 +78,6 @@ function Write() {
               <div className="sub">자세히 적어주면 감사!</div>
             </div>
           </div>
-
           <WriteContainer>
             <Date>
               <h1>📅 날짜</h1>
@@ -104,6 +103,7 @@ function Write() {
                     place: e.target.value,
                   });
                 }}
+                
               />
             </Place>
             <Member>
