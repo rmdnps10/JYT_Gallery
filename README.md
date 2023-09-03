@@ -11,7 +11,8 @@
 | <img src="https://user-images.githubusercontent.com/87219998/264147303-9dcf7535-fdc2-4fea-a58a-d926c814b207.jpg" width="200px" height="220px"> | <img src="https://user-images.githubusercontent.com/87219998/264147319-4f22fa28-a47e-4500-a8dc-b27b0d1a92b3.png" width= "200px" height="220px"> |
 | 서강대학교 아트엔테크놀리지                                                                                                                    | 건국대학교 경영학과                                                                                                                             |
 
-ㄴ 할짓없는 대학생 ##프로젝트 소개
+ㄴ 할짓없는 대학생
+## 프로젝트 소개
 
 바보 대학생 2명이서 우리끼리 뭔가 해보고 싶어서 만든 CRUD 게시판 프로젝트
 
