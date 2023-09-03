@@ -9,6 +9,7 @@ import Album from "./pages/Album";
 import Write from "./pages/Write";
 import Footer from "./components/Footer";
 import ShowPost from "./components/ShowPost";
+import Auth from "./pages/Auth";
 export const Baseurl = process.env.REACT_APP_KEY;
 export const KaKaoLoginKey = process.env.REACT_APP_REST_API_KEY;
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/History" element={<History />}></Route>
           <Route path="/Who" element={<Who />}></Route>
           <Route path="/Write" element={<Write />}></Route>
+          <Route path="/Auth" element={<Auth/>}></Route>
           <Route path="/post/:postID" element={<ShowPost />}></Route>
         </Routes>
         <Footer />

@@ -15,6 +15,7 @@ function Write() {
     content: "",
   });
   const [file, setFile] = useState("");
+  const [login, setLogin] = useState(false);
   const onChangeImg = (e) => {
     if (e.target.files) {
       const uploadFile = e.target.files[0];
@@ -64,7 +65,9 @@ function Write() {
   };
 
   useEffect(() => {
-    console.log("안녕");
+    if (localStorage.getItem("token")){
+      setState({...state, member: localStorage.getItem("token")})
+    }
   }, []);
 
   return (
@@ -103,7 +106,6 @@ function Write() {
                     place: e.target.value,
                   });
                 }}
-                
               />
             </Place>
             <Member>
