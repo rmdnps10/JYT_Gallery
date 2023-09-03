@@ -6,12 +6,14 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
-import { Baseurl } from "../App";
+import { Baseurl, KaKaoLoginKey } from "../App";
+
 
 //https://jsonplaceholder.typicode.com/comments
 
 function Home() {
   const navigate = useNavigate();
+  
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState([]);
 

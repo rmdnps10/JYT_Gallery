@@ -3,10 +3,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { KaKaoLoginKey } from "../App";
+import { 리다이렉트주소, 인가코드요청주소 } from "../utils/Oauth";
 
 const Nav = () => {
+  const codeRequestUrl = `${인가코드요청주소}?client_id=${KaKaoLoginKey}&redirect_uri=${리다이렉트주소}&response_type=code`;
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,6 +18,7 @@ const Nav = () => {
   const Gohome = () => {
     navigate("/");
   };
+
   return (
     <NavContainer>
       <NavWrapper>
@@ -26,10 +29,15 @@ const Nav = () => {
           <ul className="menu-list">
             <li></li>
             <li>
-              <img
-                src="./images/kakao_login_large.png"
-                style={{ width: "60px" }}
-              />
+              <a
+                href={codeRequestUrl}
+                style={{ width: "60px", height: "35px" }}
+              >
+                <img
+                  src="./images/kakao_login_large.png"
+                  style={{ width: "100%" }}
+                />
+              </a>
             </li>
             <li>
               <FontAwesomeIcon

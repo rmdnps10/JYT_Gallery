@@ -10,6 +10,7 @@ import Write from "./pages/Write";
 import Footer from "./components/Footer";
 import ShowPost from "./components/ShowPost";
 export const Baseurl = process.env.REACT_APP_KEY;
+export const KaKaoLoginKey = process.env.REACT_APP_REST_API_KEY;
 function App() {
   return (
     <>
