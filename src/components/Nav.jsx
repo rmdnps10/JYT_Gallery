@@ -26,6 +26,12 @@ const Nav = () => {
           <ul className="menu-list">
             <li></li>
             <li>
+              <img
+                src="./images/kakao_login_large.png"
+                style={{ width: "60px" }}
+              />
+            </li>
+            <li>
               <FontAwesomeIcon
                 icon={faPenToSquare}
                 size="xl"
@@ -34,6 +40,7 @@ const Nav = () => {
                 }}
               />
             </li>
+
             <li>
               <a href="https://github.com">
                 <FontAwesomeIcon icon={faGithub} size="xl" />
