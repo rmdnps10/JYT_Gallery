@@ -19,6 +19,7 @@ function PostItem({
   const imageProcessing = (str) => {
     return str.substr(27);
   };
+
   const navigate = useNavigate();
   const url = "/api/jyt/post/";
   const truncateString = (inputString, maxLength) => {
@@ -46,7 +47,15 @@ function PostItem({
           </div>
           <div className="content">{content}</div>
 
-          {image ? <div className="image-preview"></div> : ""}
+          {image ? (
+            <div className="image-preview">
+              <img
+                src={`${image.substr(0, 57)}/jyt/media/${image.substr(63)}`}
+              />
+            </div>
+          ) : (
+            ""
+          )}
           <div className="member">
             <FontAwesomeIcon
               icon={faPeopleGroup}
