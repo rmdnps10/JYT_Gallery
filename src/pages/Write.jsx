@@ -6,6 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Baseurl } from "../App";
+import { 유저정보요청주소 } from "../utils/Oauth";
 function Write() {
   const formData = new FormData();
   const [state, setState] = useState({
@@ -40,7 +41,7 @@ function Write() {
         alert("내용은 최소 이준엽_2020수능_물리등급 글자이상 입력하세요.");
         return;
       }
-      console.log(formData);
+
       formData.append("image", file);
       formData.append("create_date", date);
       formData.append("subject", place);
@@ -64,9 +65,23 @@ function Write() {
     }
   };
 
+  const getUserData = async () => {
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+    };
+    const userdata = await axios.get(유저정보요청주소, { headers });
+    console.log(userdata);
+    return userdata;
+  };
+
   useEffect(() => {
-    if (localStorage.getItem("token")){
-      setState({...state, member: localStorage.getItem("token")})
+    if (localStorage.getItem("token")) {
+      getUserData().then((res) => {
+        setState({ ...state, member: res.data.properties.nickname });
+      });
+    } else {
+      return;
     }
   }, []);
 
